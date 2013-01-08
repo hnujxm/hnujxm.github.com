@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[小明jane's吐槽]]></title>
+  <link href="http://hnujxm.github.com/atom.xml" rel="self"/>
+  <link href="http://hnujxm.github.com/"/>
+  <updated>2013-01-08T16:58:02+08:00</updated>
+  <id>http://hnujxm.github.com/</id>
+  <author>
+    <name><![CDATA[小明jane]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
