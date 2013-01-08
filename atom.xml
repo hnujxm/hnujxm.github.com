@@ -4,7 +4,7 @@
   <title><![CDATA[小明jane's吐槽]]></title>
   <link href="http://hnujxm.github.com/atom.xml" rel="self"/>
   <link href="http://hnujxm.github.com/"/>
-  <updated>2013-01-08T17:03:34+08:00</updated>
+  <updated>2013-01-08T17:16:30+08:00</updated>
   <id>http://hnujxm.github.com/</id>
   <author>
     <name><![CDATA[小明jane]]></name>
@@ -12,5 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[github octopress try]]></title>
+    <link href="http://hnujxm.github.com/blog/2013/01/08/github-octopress-try/"/>
+    <updated>2013-01-08T17:12:00+08:00</updated>
+    <id>http://hnujxm.github.com/blog/2013/01/08/github-octopress-try</id>
+    <content type="html"><![CDATA[<h1>在试用github上试用octopress</h1>
+
+<blockquote><p>感觉真的很好用，其中碰到一个问题就是rake deploy部署不上去，说公钥不被允许，后来配置了ssh公钥登陆后就好了</p></blockquote>
+]]></content>
+  </entry>
   
 </feed>
