@@ -4,7 +4,7 @@
   <title><![CDATA[小明jane's吐槽]]></title>
   <link href="http://hnujxm.github.com/atom.xml" rel="self"/>
   <link href="http://hnujxm.github.com/"/>
-  <updated>2013-01-08T18:12:05+08:00</updated>
+  <updated>2013-01-28T15:57:45+08:00</updated>
   <id>http://hnujxm.github.com/</id>
   <author>
     <name><![CDATA[小明jane]]></name>
@@ -12,6 +12,151 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[client javascript module]]></title>
+    <link href="http://hnujxm.github.com/blog/2013/01/28/client-javascript-module/"/>
+    <updated>2013-01-28T15:56:00+08:00</updated>
+    <id>http://hnujxm.github.com/blog/2013/01/28/client-javascript-module</id>
+    <content type="html"><![CDATA[<h1>模块化开发前期调研</h1>
+
+<h2>规范</h2>
+
+<p><a href="http://www.commonjs.org" title="以下所有规范都可以找到">官方网址</a> <a href="http://www.udpwork.com/item/3978.html">参考文章</a></p>
+
+<h3>CommonJS Modules/1.0</h3>
+
+<blockquote><p>一个文件就是一个模块 <br/>
+模块有 require, exports, module 三个变量 <br/>
+模块可以通过require引入外部模块，通过exporst对外提供API</p></blockquote>
+
+<h3>Modules/AsynchronousDefinition</h3>
+
+<blockquote><p>define(id?, dependencies?, factory)<br/>
+AMD 规定 dependencies 中的模块，可以作为 factory 的参数 <br/>
+<a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD 规范</a> 实现 <a href="http://requirejs.org/">requirejs</a>  <a href="https://github.com/cujojs/curl">curljs</a>   <a href="http://ozjs.org/">ozjs</a></p></blockquote>
+
+<h3>Modules/Wrappings</h3>
+
+<blockquote><p>module.declare(id?, dependencies?, factory)<br/>
+factory 的参数更简单，和 dependencies 无对应关系 <br/>
+<a href="http://wiki.commonjs.org/wiki/Modules/Wrappings">Wrappings 规范</a> 实现<a href="http://seajs.org/">seajs</a></p></blockquote>
+
+<h2>参考开源库</h2>
+
+<h3>seajs</h3>
+
+<blockquote><p>功能强大
+以及有工业应用
+规则复杂
+规则过于复杂，可能在构建后，导致线上线下环境不同而出现错误。</p></blockquote>
+
+<h3>requirejs</h3>
+
+<blockquote><p>基于AMD的实现    <br/>
+有针对jquery以及nodejs的硬编码 <br/>
+体积过大</p></blockquote>
+
+<h2>ozjs</h2>
+
+<blockquote><p>文档少  <br/>
+用法跟规则偏多 <br/>
+提供大量易于使用的类库</p></blockquote>
+
+<h3>curljs</h3>
+
+<blockquote><p>基于AMD的实现 <br/>
+以插件方式实现大量功能  <br/>
+<a href="http://wiki.commonjs.org/wiki/Promises">Promises</a></p></blockquote>
+
+<h3>stk 新浪微博</h3>
+
+<blockquote><p>微博的方案，稳定  <br/>
+代码不优雅  <br/>
+共享代码不方便</p></blockquote>
+
+<h2>方案</h2>
+
+<ol>
+<li>实现一套完全类似commonjs module/1.0，完全兼容nodejs写法。</li>
+<li>开发时需要静态资源服务器来处理、闭包。硬塞代码</li>
+<li>发布的时候合并代码</li>
+<li>好处:不需要担心发布跟开发代码不一致问题</li>
+<li><p>坏处：需要自己开发静态分析程序，开发环节需要服务器支持。完全没有参考</p></li>
+<li><p>完成按照stk方式</p></li>
+<li>完全按照微博的方案实现</li>
+<li>好处：完全类似java模式，不需要当心发布跟开发的不一致问题</li>
+<li><p>坏处:每次都调用stk.regester。类似java的目录式包管理，一个文件变了，其他依赖的文件都会变。</p></li>
+<li><p>seajs</p></li>
+<li>简化规则</li>
+<li>开发针对规则的检测工具</li>
+<li>项目代码不参与版本控制，统一的模块配置规则</li>
+<li>基础库需要版本控制，单独模块的配置规则，单独发cdn</li>
+<li><p>搭建私有源，私有源用来共享基础库。</p></li>
+<li><p>requirejs精简</p></li>
+<li>精简一份requirejs代码。</li>
+<li>构建优化工具</li>
+<li><a href="https://github.com/jrburke/almond">参考</a></li>
+</ol>
+
+
+<h1>调研结果</h1>
+
+<h2>基础 API</h2>
+
+<h3>CommonJS API</h3>
+
+<ul>
+<li><a href="http://wiki.commonjs.org/wiki/Modules/1.1.1">Modules/1.1.1</a></li>
+<li><a href="http://wiki.commonjs.org/wiki/Modules/Wrappings">Modules/Wrappings</a></li>
+</ul>
+
+
+<p><a href="http://www.commonjs.org">官方网址</a> <br/>
+<a href="http://www.udpwork.com/item/3978.html">参考文章</a></p>
+
+<h2>模块化框架</h2>
+
+<p><strong><a href="http://seajs.org/">SeaJS</a></strong></p>
+
+<h3>优势</h3>
+
+<ul>
+<li>module/warpping规范，可以异步加载，实现按需加载</li>
+<li>spm构建工具，spm搭建私有源，共享代码</li>
+<li>版本控制，别名管理，依赖管理，公用组件多版本并存</li>
+<li>完善的文档，工业应用，活跃的社区</li>
+</ul>
+
+
+<h3>计划</h3>
+
+<ul>
+<li>简化规则</li>
+<li>GITLIB版本控制</li>
+<li>开发针对规则的检测工具</li>
+<li>项目代码与基础库隔离</li>
+<li>项目代码不参与版本控制</li>
+<li>基础库需要版本控制</li>
+<li>搭建私有源，私有源用来共享库</li>
+</ul>
+
+
+<h2>实施</h2>
+
+<h3>1月21日到1月27日</h3>
+
+<p>分析结果以及解决方案，完成基本框架的搭建，给出demo</p>
+
+<h3>1月28日到2月3日</h3>
+
+<p>站外注册项目试用模块化开发框架</p>
+
+<h3>2月4日到2月8日</h3>
+
+<p>框架完善阶段，基于框架开始准备开发基础库。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[github octopress try]]></title>
